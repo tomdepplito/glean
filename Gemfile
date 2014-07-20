@@ -11,6 +11,10 @@ gem 'jbuilder', '~> 2.0'
 gem 'figaro'
 gem 'haml-rails'
 
+# WEB SCRAPING
+gem 'nokogiri'
+gem 'httparty'
+
 # SERVERS
 gem 'thin'
 gem 'unicorn'
