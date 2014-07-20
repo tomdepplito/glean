@@ -1,0 +1,20 @@
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: glean_prod
+  pool: 5
+  host: localhost
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: glean_dev
+  pool: 5
+  host: localhost
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: glean_test
+  pool: 5
+  host: localhost
