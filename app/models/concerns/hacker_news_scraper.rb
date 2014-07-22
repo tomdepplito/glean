@@ -28,5 +28,6 @@ class HackerNewsScraper < PostingsScraper
   end
 
   def create_tags(article)
+    # parse body and add tags to new_posting here
   end
 end
