@@ -1,6 +1,7 @@
 production:
   adapter: postgresql
   encoding: unicode
+  host: localhost
   database: ENV["DATABASE"]
   username: ENV["USER"]
   password: ENV["PASSWORD"]
