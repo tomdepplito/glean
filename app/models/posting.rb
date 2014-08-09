@@ -10,7 +10,7 @@ class Posting < ActiveRecord::Base
     false
   end
 
-  def valid?
+  def valid_post?
     url =~ /http:\/\// && !title.blank? && !(url =~ /ycombinator/)
   end
 end

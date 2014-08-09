@@ -19,7 +19,7 @@ class HackerNewsScraper < PostingsScraper
         title = scraped_post.children.last.content.downcase
         url = scraped_post.attributes['href'].value
         new_posting = Posting.new(title: title, url: url, source: self.class.to_s)
-        if new_posting.valid?
+        if new_posting.valid_post?
           @preferences ||= Preference.get
           begin
             new_posting.save! if new_posting.match_preferences?(@preferences)
