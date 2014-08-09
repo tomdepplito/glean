@@ -1,1 +1,1 @@
-#$redis = Redis.new(host: Rails.env.production? ENV['REDISTOGO_URL'] : 'localhost', port: 6379
+$redis = Redis.new(host: (Rails.env.production? ? ENV['REDISTOGO_URL'] : 'localhost'), port: 9894)
