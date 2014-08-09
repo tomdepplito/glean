@@ -13,3 +13,11 @@
 #    config.redis = { :size => 5 }
 #  end
 #end
+
+worker_processes 2
+@sidekiq_pid = nil
+
+before_fork do |server, worker|
+ @sidekiq_pid ||= spawn("bundle exec sidekiq -c 2")
+ Rails.logger.info("Spawned sidekiq #{@sidekiq_pid}")
+end

@@ -19,9 +19,12 @@ class HackerNewsScraper < PostingsScraper
         title = scraped_post.children.last.content.downcase
         url = scraped_post.attributes['href'].value
         new_posting = Posting.new(title: title, url: url, source: self.class.to_s)
-        begin
-          new_posting.save! unless new_posting.url =~ /ycombinator/
-        rescue
+        if new_posting.valid?
+          @preferences ||= Preference.get
+          begin
+            new_posting.save! if new_posting.match_preferences?(@preferences)
+          rescue
+          end
         end
       end
     end

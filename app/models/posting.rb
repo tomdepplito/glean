@@ -9,4 +9,8 @@ class Posting < ActiveRecord::Base
     end
     false
   end
+
+  def valid?
+    url =~ /http:\/\// && !title.blank? && !(url =~ /ycombinator/)
+  end
 end
