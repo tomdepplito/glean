@@ -1,9 +1,9 @@
 production:
   adapter: postgresql
   encoding: unicode
-  database: glean_prod
-  pool: 5
-  host: localhost
+  database: ENV["DATABASE"]
+  username: ENV["USER"]
+  password: ENV["PASSWORD"]
 
 development:
   adapter: postgresql
