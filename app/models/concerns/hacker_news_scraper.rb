@@ -14,20 +14,16 @@ class HackerNewsScraper < PostingsScraper
   end
 
   def process_postings
-    if page.try(:response).try(:code) == "200"
+    if page && page.response.code == "200"
       Nokogiri::HTML(page).css('a').each do |scraped_post|
-        title = scraped_post.children.last.content
+        title = scraped_post.children.last.content.downcase
         url = scraped_post.attributes['href'].value
-        new_posting = Posting.new(title: title, url: url)
-        if new_posting.save!
-          article = retrieve_page(url)
-          new_posting.body = article
+        new_posting = Posting.new(title: title, url: url, source: self.class.to_s)
+        begin
+          new_posting.save! unless new_posting.url =~ /ycombinator/
+        rescue
         end
       end
     end
-  end
-
-  def create_tags(article)
-    # parse body and add tags to new_posting here
   end
 end
