@@ -26,6 +26,7 @@ gem 'redis'
 
 # BACKGROUND PROCESSING
 gem 'sidekiq'
+gem 'whenever', require: false
 gem 'sinatra'
 gem 'slim'
 
