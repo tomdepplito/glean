@@ -26,6 +26,8 @@ gem 'redis'
 
 # BACKGROUND PROCESSING
 gem 'sidekiq'
+gem 'sinatra'
+gem 'slim'
 
 group :development, :test do
   gem 'pry'
