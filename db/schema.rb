@@ -11,19 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140720131843) do
+ActiveRecord::Schema.define(version: 20141019173122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
   create_table "postings", force: true do |t|
-    t.string   "url",                     null: false
+    t.string   "url",        limit: 255,              null: false
     t.text     "body"
-    t.string   "tags",       default: [],              array: true
+    t.string   "tags",                   default: [],              array: true
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "source",                  null: false
-    t.string   "title"
+    t.string   "source",     limit: 255,              null: false
+    t.string   "title",      limit: 255
   end
+
+  create_table "preferences", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
+    t.string   "user_id"
+    t.string   "subjects",   default: [], array: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "preferences", ["user_id"], name: "index_preferences_on_user_id", unique: true, using: :btree
+
+  create_table "users", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
+    t.string   "email"
+    t.string   "password_salt"
+    t.string   "password_hash"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
 end

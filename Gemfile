@@ -11,7 +11,10 @@ gem 'jbuilder', '~> 2.0'
 gem 'figaro'
 gem 'haml-rails'
 
-# Angular
+# AUTH
+gem 'bcrypt-ruby', '~> 3.1.5'
+
+# ANGULAR
 gem 'bower-rails'
 gem 'angular-rails-templates'
 
