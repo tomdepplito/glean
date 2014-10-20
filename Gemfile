@@ -12,7 +12,7 @@ gem 'figaro'
 gem 'haml-rails'
 
 # AUTH
-gem 'bcrypt-ruby', '~> 3.1.5'
+gem 'bcrypt', '~> 3.1.5'
 
 # ANGULAR
 gem 'bower-rails'
